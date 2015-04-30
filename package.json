@@ -1,0 +1,29 @@
+{
+  "name": "cerulean",
+  "version": "0.0.1",
+  "description": "Wrappers, utilities, etc. for making working with Azure in Node.js even easier.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noodlefrenzy/node-cerulean.git"
+  },
+  "keywords": [
+    "azure",
+    "storage",
+    "blob",
+    "table"
+  ],
+  "author": {
+    "name": "noodlefrenzy",
+    "email": "milanz@microsoft.com",
+    "url": "http://www.mikelanzetta.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noodlefrenzy/node-cerulean/issues"
+  },
+  "homepage": "https://github.com/noodlefrenzy/node-cerulean"
+}
