@@ -25,5 +25,13 @@
   "bugs": {
     "url": "https://github.com/noodlefrenzy/node-cerulean/issues"
   },
-  "homepage": "https://github.com/noodlefrenzy/node-cerulean"
+  "homepage": "https://github.com/noodlefrenzy/node-cerulean",
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "istanbul": "^0.3.13",
+    "mocha": "^2.2.4"
+  },
+  "dependencies": {
+    "azure": "^0.10.5"
+  }
 }
