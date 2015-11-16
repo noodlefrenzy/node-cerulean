@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "pretest": "jshint lib",
-    "test": "mocha test"
+    "test": "mocha --recursive --globals setImmediate,clearImmediate --recursive --check-leaks --colors -t 60000 --reporter spec"
   },
   "repository": {
     "type": "git",
