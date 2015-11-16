@@ -2,7 +2,8 @@
 
 var Lease = require('../../lib/index').Lease,
     config = require('./config'),
-    expect = require('chai').expect;
+    expect = require('chai').expect,
+    uuid = require('uuid');
 
 describe('Lease', function () {
    var assertConfig = function() {
@@ -11,7 +12,8 @@ describe('Lease', function () {
    };
    it('should grab and release a lease', function(done) {
        assertConfig();
-       var lease = new Lease(config.accountName, config.accountKey, config.containerName, config.blobName);
+       var blobName = uuid.v4();
+       var lease = new Lease(config.accountName, config.accountKey, config.containerName, blobName);
 
        lease.acquire({ leaseDuration: 15 }).then(function() {
            return lease.updateContents('Testing update');
@@ -19,7 +21,7 @@ describe('Lease', function () {
            return lease.getContents();
        }).then(function (contents) {
            expect(contents).to.eql('Testing update');
-           return lease.release()
+           return lease.release();
        }).then(function() {
            done();
        });
