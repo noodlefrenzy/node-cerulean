@@ -4,7 +4,8 @@
   "description": "Wrappers, utilities, etc. for making working with Azure in Node.js even easier.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha test"
+    "pretest": "jshint lib",
+    "test": "mocha --recursive --globals setImmediate,clearImmediate --recursive --check-leaks --colors -t 60000 --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -29,9 +30,15 @@
   "devDependencies": {
     "chai": "^2.3.0",
     "istanbul": "^0.3.13",
-    "mocha": "^2.2.4"
+    "jshint": "^2.8.0",
+    "mocha": "^2.2.4",
+    "uuid": "^2.0.1"
   },
   "dependencies": {
-    "azure": "^0.10.5"
+    "azure": "^0.10.5",
+    "azure-storage": "^0.6.0",
+    "bluebird": "^3.0.5",
+    "debug": "^2.2.0",
+    "lodash": "^3.10.1"
   }
 }
