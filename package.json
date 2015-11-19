@@ -1,6 +1,6 @@
 {
   "name": "cerulean",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Wrappers, utilities, etc. for making working with Azure in Node.js even easier.",
   "main": "lib/index.js",
   "scripts": {
