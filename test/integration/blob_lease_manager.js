@@ -14,7 +14,7 @@ describe('LeaseManager', function () {
   it('should allow lease takeover', function (done) {
     assertConfig();
     var blobName = uuid.v4();
-    var lease = new Lease(config.accountName, config.accountKey, config.containerName, blobName);
+    var lease = Lease.fromNameAndKey(config.accountName, config.accountKey, config.containerName, blobName);
     var m1 = new LeaseManager({leaseDuration: 15});
     var managedByM1 = false;
     m1.on(LeaseManager.Acquired, function () {

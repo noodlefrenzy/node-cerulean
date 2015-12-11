@@ -13,7 +13,7 @@ describe('Lease', function () {
   it('should grab and release a lease', function (done) {
     assertConfig();
     var blobName = uuid.v4();
-    var lease = new Lease(config.accountName, config.accountKey, config.containerName, blobName);
+    var lease = Lease.fromNameAndKey(config.accountName, config.accountKey, config.containerName, blobName);
 
     lease.acquire({leaseDuration: 15}).then(function () {
       return lease.updateContents('Testing update');
