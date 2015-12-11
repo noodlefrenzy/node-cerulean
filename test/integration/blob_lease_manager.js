@@ -19,10 +19,12 @@ describe('LeaseManager', function () {
     var managedByM1 = false;
     m1.on(LeaseManager.Acquired, function () {
       managedByM1 = true;
+      expect(lease.isHeld()).to.eql(true);
       m1.unmanageLease(lease);
     });
     var m2 = new LeaseManager({leaseDuration: 15});
     m2.on(LeaseManager.Acquired, function () {
+      expect(lease.isHeld()).to.eql(true);
       m2.unmanageLease(lease);
     });
     m2.on(LeaseManager.Released, function () {

@@ -16,6 +16,7 @@ describe('Lease', function () {
     var lease = Lease.fromNameAndKey(config.accountName, config.accountKey, config.containerName, blobName);
 
     lease.acquire({leaseDuration: 15}).then(function () {
+      expect(lease.isHeld()).to.eql(true);
       return lease.updateContents('Testing update');
     }).then(function () {
       return lease.getContents();
@@ -23,6 +24,7 @@ describe('Lease', function () {
       expect(contents).to.eql('Testing update');
       return lease.release();
     }).then(function () {
+      expect(lease.isHeld()).to.eql(false);
       done();
     });
   });
