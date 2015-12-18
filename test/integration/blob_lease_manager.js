@@ -36,4 +36,26 @@ describe('LeaseManager', function () {
     }, 2000);
     m1.manageLease(lease);
   });
+  it('should manage several leases', function (done) {
+    assertConfig();
+    var blobNameRoot = uuid.v4();
+    var leases = [];
+    var mgr = new LeaseManager({leaseDuration: 15});
+    mgr.on(LeaseManager.Acquired, function (l) {
+      expect(l.isHeld()).to.eql(true);
+      leases[l.idx].held = true;
+      if (leases.every(function (x) { return x.held; })) {
+        leases.forEach(function (_l) { mgr.unmanageLease(_l.lease); });
+        done();
+      }
+    });
+    for (var idx=0; idx < 20; ++idx) {
+      var details = {};
+      details.blobName = blobNameRoot + idx;
+      details.lease = Lease.fromNameAndKey(config.accountName, config.accountKey, config.containerName, details.blobName);
+      details.lease.idx = idx;
+      leases.push(details);
+      mgr.manageLease(details.lease);
+    }
+  });
 });
