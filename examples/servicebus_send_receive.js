@@ -8,7 +8,7 @@ var azure = require('azure');
 function checkForMessages(sbService, queueName, callback) {
   sbService.receiveQueueMessage(queueName, {isPeekLock: true}, function (err, lockedMessage) {
     if (err) {
-      if (err == 'No messages to receive') {
+      if (err === 'No messages to receive') {
         console.log('No messages');
       } else {
         callback(err);
@@ -30,7 +30,7 @@ function processMessage(sbService, err, lockedMsg) {
       } else {
         console.log('Deleted message.');
       }
-    })
+    });
   }
 }
 
